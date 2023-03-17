@@ -34,10 +34,8 @@ button.addEventListener("click", () => {
 // Selon la réponse de l'utilisateur vous remplacez le text "Votre réponse est ..." du paragraphe par "Bonne" ou "Mauvaise"
 
 const input: HTMLInputElement | null = document.querySelector(".input_exo3");
-const responseText: HTMLElement | null =
-  document.querySelector("#response-text");
-const submitBtn: HTMLButtonElement | null =
-  document.querySelector("#submit-btn");
+const responseText: HTMLElement | null = document.querySelector("#response-text");
+const submitBtn: HTMLButtonElement | null = document.querySelector("#submit-btn");
 
 // Ajout d'un événement sur le bouton de soumission
 submitBtn.addEventListener("click", function () {
