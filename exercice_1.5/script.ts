@@ -60,21 +60,39 @@ submitBtn.addEventListener("click", function () {
 
 const coralSquares = document.querySelectorAll('.coral');
 
-coralSquares.forEach(square => {
-    square.addEventListener('click', () => {
-        // Changement de couleur du carré cliqué
-        square.classList.remove('coral');
-        square.classList.add('green');
+for (let i = 0; i < coralSquares.length; i++) {
+  const square = coralSquares[i] as HTMLElement;
+  
+  square.addEventListener('click', () => {
+    if (square.classList.contains('coral')) {
+      square.classList.remove('coral');
+      square.classList.add('green');
+      
+      for (let j = 0; j < coralSquares.length; j++) {
+        const otherSquare = coralSquares[j] as HTMLElement;
+        if (otherSquare !== square) {
+          otherSquare.classList.remove('green');
+          otherSquare.classList.add('coral');
 
-        // Changement de couleur des autres carrés coral
-        const otherCorals = document.querySelectorAll('.coral');
-        otherCorals.forEach(coralSquare => {
-            coralSquare.classList.remove('green');
-            coralSquare.classList.add('coral');
-        });
-    });
-});
+          for (let o = 0; o < coralSquares.length; o++) {
+            const currentSquare = coralSquares[o]
 
+            if (currentSquare === square) {
+              console.log('on exclu le carre suivant :')
+              console.log(currentSquare)
+            } else {
+
+              if (currentSquare.classList.contains('green')) {
+                  currentSquare.classList.remove('green')
+                  currentSquare.classList.add('coral')
+              }
+            }
+          }
+        }
+      }
+    }
+  });
+}
 // Exercie 5
 
 // Lorsque l'utilisateur selectionne une liste, replacez la liste bidon par les membres de l'équipe sélectionnée
