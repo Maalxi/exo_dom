@@ -29,40 +29,39 @@
 // Si il appuie sur une touche avec une consonne, affichez "consonne" dans la console
 // Si il appuie sur une touch qui n'est ni une voyelle ni une consonne, affichez "Pas dans l'alphabet" dans la console
 
+const letters = document.querySelectorAll<HTMLDivElement>(".letter");
 
-const letters = document.querySelectorAll(".letter");
-
-function isVowel(letter) {
-  const vowels = ['a', 'e', 'i', 'o', 'u'];
+function isVowel(letter: string): boolean {
+  const vowels = ["a", "e", "i", "o", "u", "y"];
   return vowels.includes(letter.toLowerCase());
 }
 
-function isConsonant(letter) {
+function isConsonant(letter: string): boolean {
   return /^[a-zA-Z]$/.test(letter) && !isVowel(letter);
 }
 
 letters.forEach((letter) => {
   letter.addEventListener("click", () => {
-    const clickedLetter = letter.textContent;
-    if (isVowel(clickedLetter)) {
-      console.log('voyelle');
-    } else if (isConsonant(clickedLetter)) {
-      console.log('consonne');
-    } else {
-      console.log('Pas dans l\'alphabet');
-    }
-    if (letter.style.backgroundColor === "red") {
-      letter.style.backgroundColor = "white";
-    } else {
-      letters.forEach((l) => {
-        l.style.backgroundColor = "white";
-      });
-      letter.style.backgroundColor = "red";
+    const clickedLetter: string | null = letter.textContent;
+    if (clickedLetter !== null) {
+      if (isVowel(clickedLetter)) {
+        console.log("voyelle");
+      } else if (isConsonant(clickedLetter)) {
+        console.log("consonne");
+      } else {
+        console.log("Pas dans l'alphabet");
+      }
+      if (letter.style.backgroundColor === "red") {
+        letter.style.backgroundColor = "white";
+      } else {
+        letters.forEach((l) => {
+          l.style.backgroundColor = "white";
+        });
+        letter.style.backgroundColor = "red";
+      }
     }
   });
 });
-
-
 
 // Exercice 2.2
 
