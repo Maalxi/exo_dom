@@ -31,22 +31,22 @@
 
 const letters = document.querySelectorAll<HTMLDivElement>(".letter");
 
-function isVowel(letter: string): boolean {
+function voyelle(letter: string): boolean {
   const vowels = ["a", "e", "i", "o", "u", "y"];
   return vowels.includes(letter.toLowerCase());
 }
 
-function isConsonant(letter: string): boolean {
-  return /^[a-zA-Z]$/.test(letter) && !isVowel(letter);
+function consonne(letter: string): boolean {
+  return /^[a-zA-Z]$/.test(letter) && !voyelle(letter);
 }
 
 letters.forEach((letter) => {
   letter.addEventListener("click", () => {
     const clickedLetter: string | null = letter.textContent;
     if (clickedLetter !== null) {
-      if (isVowel(clickedLetter)) {
+      if (voyelle(clickedLetter)) {
         console.log("voyelle");
-      } else if (isConsonant(clickedLetter)) {
+      } else if (consonne(clickedLetter)) {
         console.log("consonne");
       } else {
         console.log("Pas dans l'alphabet");
